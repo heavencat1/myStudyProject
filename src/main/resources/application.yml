@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/sm_db
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+
+
+# mybatis-plus配置文件
+mybatis-plus:
+  type-aliases-package: com.atguigu.pojo
+  global-config:
+    db-config:
+      logic-delete-field: is_deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      id-type: auto #设置主键自增长
+      table-prefix: news_
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#jwt
+jwt:
+  token:
+    tokenExpiration: 120 #有效时间,单位分钟
+    tokenSignKey: headline123456  #当前程序签名秘钥 自定义
